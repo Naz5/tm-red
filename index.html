@@ -1,36 +1,124 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Перейти в Telegram</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #ffffff;
-      font-family: Arial, sans-serif;
-    }
-    a {
-      display: inline-block;
-      padding: 16px 32px;
-      font-size: 20px;
-      color: #ffffff;
-      background-color: #0088cc;
-      text-decoration: none;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-    a:hover {
-      background-color: #0077b6;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Як відкрити Telegram</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 2rem;
+    max-width: 480px;
+    margin: auto;
+    background: #f0f0f0;
+    color: #222;
+    text-align: center;
+  }
+  h1 {
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+  }
+  .step {
+    text-align: left;
+    margin: 1rem 0;
+    font-size: 1rem;
+  }
+  button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #007aff;
+    color: white;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #005bb5;
+  }
+  small {
+    display: block;
+    margin-top: 3rem;
+    color: #666;
+  }
+</style>
 </head>
 <body>
-  <a href="https://t.me/vnautoflow" target="_blank" rel="noopener noreferrer">
-    Відкрити канал в Telegram
-  </a>
+
+<h1 id="title">Open Telegram Channel</h1>
+
+<div id="instructions">
+  <p>To open this link correctly in TikTok app, please:</p>
+  <div class="step">1. Tap the <strong>three dots (⋮)</strong> in the top-right corner of TikTok.</div>
+  <div class="step">2. Select <strong>"Open in browser"</strong> from the menu.</div>
+  <div class="step">3. The link will open in your default browser, where Telegram links work correctly.</div>
+</div>
+
+<button id="openBtn" onclick="openTelegram()">Open Telegram</button>
+
+<script>
+  const tgLink = "https://t.me/vnautoflow";
+
+  function openTelegram() {
+    window.open(tgLink, "_blank");
+  }
+
+  const texts = {
+    uk: {
+      title: "Як відкрити Telegram канал",
+      instructionsIntro: "Щоб посилання працювало у додатку TikTok, будь ласка:",
+      step1: "1. Натисніть на <strong>три крапки (⋮)</strong> у верхньому правому куті додатку TikTok.",
+      step2: "2. Оберіть у меню <strong>«Відкрити у браузері»</strong>.",
+      step3: "3. Посилання відкриється у браузері, де Telegram працюватиме коректно.",
+      openBtn: "Відкрити Telegram"
+    },
+    ru: {
+      title: "Как открыть Telegram канал",
+      instructionsIntro: "Чтобы ссылка работала в приложении TikTok, пожалуйста:",
+      step1: "1. Нажмите на <strong>три точки (⋮)</strong> в правом верхнем углу приложения TikTok.",
+      step2: "2. Выберите в меню <strong>«Открыть в браузере»</strong>.",
+      step3: "3. Ссылка откроется в браузере, где Telegram будет работать корректно.",
+      openBtn: "Открыть Telegram"
+    },
+    en: {
+      title: "How to open Telegram channel",
+      instructionsIntro: "To open this link correctly in TikTok app, please:",
+      step1: "1. Tap the <strong>three dots (⋮)</strong> in the top-right corner of TikTok.",
+      step2: "2. Select <strong>\"Open in browser\"</strong> from the menu.",
+      step3: "3. The link will open in your default browser, where Telegram links work correctly.",
+      openBtn: "Open Telegram"
+    }
+  };
+
+  function detectLang() {
+    const lang = navigator.language || navigator.userLanguage || "en";
+    if (lang.startsWith("uk")) return "uk";
+    if (lang.startsWith("ru")) return "ru";
+    return "en";
+  }
+
+  function applyTexts(lang) {
+    const t = texts[lang];
+    document.getElementById("title").innerText = t.title;
+    const instructions = document.getElementById("instructions");
+    instructions.innerHTML = `
+      <p>${t.instructionsIntro}</p>
+      <div class="step">${t.step1}</div>
+      <div class="step">${t.step2}</div>
+      <div class="step">${t.step3}</div>
+    `;
+    document.getElementById("openBtn").textContent = t.openBtn;
+  }
+
+  applyTexts(detectLang());
+
+</script>
+
+<small>© Your Company</small>
+
 </body>
 </html>
+
